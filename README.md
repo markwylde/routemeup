@@ -5,7 +5,7 @@
 [![GitHub package.json version](https://img.shields.io/github/package-json/v/markwylde/routemeup)](https://github.com/markwylde/routemeup/releases)
 [![GitHub](https://img.shields.io/github/license/markwylde/routemeup)](https://github.com/markwylde/routemeup/blob/master/LICENSE)
 
-A light wrapper around the native inbuilt pbkdf2 crypto functions used for password hashing, exposing promises and callbacks.
+A simple url router that can work on the server or web client with minimal magic.
 
 ## Installation
 ```bash
