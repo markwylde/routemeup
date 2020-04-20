@@ -1,5 +1,3 @@
-// https://github.com/pillarjs/path-to-regexp
-
 const test = require('tape');
 const routemeup = require('../');
 
