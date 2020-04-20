@@ -75,5 +75,24 @@ const server = http.createServer(function (request, response) {
 }).listen(8000)
 ```
 
+### Web client example
+```javascript
+const routemeup = require('routemeup');
+
+const controllers = {
+  '/users': (tokens) => {
+    document.body.innerHTML = 'This is the users page';
+  },
+
+  default: (tokens) => {
+    document.body.innerHTML = 'Page was not found';
+  }
+};
+
+const {controller, tokens} = routemeup(controllers, {url: location.href});
+controller(tokens);
+```
+
+
 ## License
 This project is licensed under the terms of the MIT license.
