@@ -13,8 +13,9 @@ npm install --save routemeup
 ```
 
 ## Example Usage
+### Generic example
 ```javascript
-const routemeup = require('routemeup')
+const routemeup = require('routemeup');
 
 const controllers = {
   '/users': {
@@ -32,6 +33,46 @@ const controllers = {
 
 const match = routemeup(controllers, { url: '/test/withToken', method: 'get' });
 match.controller('exampleArg', match.tokens);
+```
+
+### Http server example
+```javascript
+const routemeup = require('routemeup');
+
+const controllers = {
+  '/users': {
+    GET: (request, response, tokens) => {
+      response.write('the users');
+      response.end();
+    },
+    POST: (request, response, tokens) => {
+      response.write('make a user');
+      response.end();
+    },
+  },
+
+  '/users/:userId': {
+    GET: (request, response, tokens) => {
+      response.write('the user ' + tokens.userId);
+      response.end();
+    },
+    PUT: (request, response, tokens) => {
+      response.write('change the user ' + tokens.userId);
+      response.end();
+    },
+  },
+
+  default: (request, response, tokens) => {
+    response.writeHead(404);
+    response.write('Not Found')
+    response.end();
+  }
+};
+
+const server = http.createServer(function (request, response) {
+  const {controller, tokens} = routemeup(controllers, request);
+  controller(request, response, tokens)
+}).listen(8000)
 ```
 
 ## License
