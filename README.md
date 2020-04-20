@@ -24,8 +24,8 @@ const controllers = {
   },
 
   '/users/:userId': {
-    GET: (example, tokens) => `/users/${example}/${tokens.userId}:get`,
-    POST: () => `/users/${example}/${tokens.userId}:post`
+    GET: (tokens) => `/users/${tokens.userId}`,
+    PUT: (example, tokens) => `/users/${tokens.userId} with example argument ${example}`,
   },
 
   default: () => 'notfound'
