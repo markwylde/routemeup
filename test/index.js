@@ -14,6 +14,8 @@ const basicControllers = {
     POST: () => 'test/1:post'
   },
 
+  '/health': () => 'health:get',
+
   default: () => 'notfound'
 };
 
@@ -24,6 +26,15 @@ test('basic routemeup - found', t => {
   const result = match.controller();
 
   t.equal(result, 'test:get');
+});
+
+test('basic routemeup - found - no method', t => {
+  t.plan(1);
+
+  const match = routemeup(basicControllers, { url: '/health', method: 'get' });
+  const result = match.controller();
+
+  t.equal(result, 'health:get');
 });
 
 test('basic routemeup - found - different case', t => {
