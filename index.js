@@ -7,15 +7,14 @@ function routemeup (controllers, { method, url }) {
     if (matched) {
       const controller = controllers[route];
 
-
-      if(typeof controller === 'function'){
+      if (typeof controller === 'function') {
         return {
           controller: controller,
           tokens: matched.params
         };
       }
 
-      if(method){
+      if (method) {
         const requestMethod = method.toUpperCase();
         const controllerMethod = Object.keys(controller).find(key => key.toUpperCase() === requestMethod);
 
@@ -26,14 +25,6 @@ function routemeup (controllers, { method, url }) {
       }
     }
   }
-
-  if (controllers.default) {
-    return {
-      controller: controllers.default
-    };
-  }
-
-  throw new Error(`no controller found for method "${method}" on "${url}"`);
 }
 
 module.exports = routemeup;
