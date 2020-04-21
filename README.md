@@ -26,9 +26,7 @@ const controllers = {
   '/users/:userId': {
     GET: (tokens) => `/users/${tokens.userId}`,
     PUT: (example, tokens) => `/users/${tokens.userId} with example argument ${example}`,
-  },
-
-  default: () => 'notfound'
+  }
 };
 
 const match = routemeup(controllers, { url: '/test/withToken', method: 'get' });
@@ -60,12 +58,6 @@ const controllers = {
       response.write('change the user ' + tokens.userId);
       response.end();
     },
-  },
-
-  default: (request, response, tokens) => {
-    response.writeHead(404);
-    response.write('Not Found')
-    response.end();
   }
 };
 
@@ -82,10 +74,6 @@ const routemeup = require('routemeup');
 const controllers = {
   '/users': (tokens) => {
     document.body.innerHTML = 'This is the users page';
-  },
-
-  default: (tokens) => {
-    document.body.innerHTML = 'Page was not found';
   }
 };
 

@@ -62,8 +62,7 @@ test('basic routemeup - found - no method', t => {
   t.plan(1);
 
   const match = routemeup(basicControllers, { url: '/not-found', method: 'patch' });
-  const result = match.controller();
-  t.equal(result, 'notfound');
+  t.notOk(match);
 });
 
 test('basic routemeup - found - with tokens', t => {
