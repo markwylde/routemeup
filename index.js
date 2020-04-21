@@ -1,11 +1,11 @@
 const { match } = require('path-to-regexp');
 
-function routemeup (controllers, { method, url }) {
-  for (const route in controllers) {
+function routemeup (routes, { method, url }) {
+  for (const route in routes) {
     const matched = match(route)(url);
 
     if (matched) {
-      const controller = controllers[route];
+      const controller = routes[route];
 
       if (typeof controller === 'function') {
         return {
