@@ -12,9 +12,7 @@ const basicControllers = {
     POST: () => 'test/1:post'
   },
 
-  '/health': () => 'health:get',
-
-  default: () => 'notfound'
+  '/health': () => 'health:get'
 };
 
 test('basic routemeup - found', t => {
@@ -57,8 +55,7 @@ test('basic routemeup - not found', t => {
   t.plan(1);
 
   const match = routemeup(basicControllers, { url: '/not-found', method: 'get' });
-  const result = match.controller();
-  t.equal(result, 'notfound');
+  t.notOk(match);
 });
 
 test('basic routemeup - found - no method', t => {
@@ -76,17 +73,4 @@ test('basic routemeup - found - with tokens', t => {
   const result = match.controller('firstArg', match.tokens);
 
   t.equal(result, 'test/firstArg/withToken:get');
-});
-
-test('basic routemeup - not found - no default', t => {
-  t.plan(1);
-
-  try {
-    routemeup({
-      ...basicControllers,
-      default: undefined
-    }, { url: '/not-found', method: 'get' });
-  } catch (error) {
-    t.equal(error.message, 'no controller found for method "get" on "/not-found"');
-  }
 });
