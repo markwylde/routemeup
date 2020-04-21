@@ -7,31 +7,23 @@ function routemeup (controllers, { method, url }) {
     if (matched) {
       const controller = controllers[route];
 
-      if (controller[method]) {
+
+      if(typeof controller === 'function'){
         return {
-          controller: controller[method],
+          controller: controller,
           tokens: matched.params
         };
       }
 
-      if (controller[method.toUpperCase()]) {
+      if(method){
+        const requestMethod = method.toUpperCase();
+        const controllerMethod = Object.keys(controller).find(key => key.toUpperCase() === requestMethod);
+
         return {
-          controller: controller[method.toUpperCase()],
+          controller: controller[controllerMethod],
           tokens: matched.params
         };
       }
-
-      if (controller[method.toLowerCase()]) {
-        return {
-          controller: controller[method.toLowerCase()],
-          tokens: matched.params
-        };
-      }
-
-      return {
-        controller: controller,
-        tokens: matched.params
-      };
     }
   }
 

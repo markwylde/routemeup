@@ -44,6 +44,15 @@ test('basic routemeup - found - different case', t => {
   t.equal(result, 'test:get');
 });
 
+test('basic routemeup - found - random case', t => {
+  t.plan(1);
+
+  const match = routemeup(basicControllers, { url: '/test', method: 'Get' });
+  const result = match.controller();
+
+  t.equal(result, 'test:get');
+});
+
 test('basic routemeup - not found', t => {
   t.plan(1);
 
