@@ -26,14 +26,6 @@ function routemeup (controllers, { method, url }) {
       }
     }
   }
-
-  if (controllers.default) {
-    return {
-      controller: controllers.default
-    };
-  }
-
-  throw new Error(`no controller found for method "${method}" on "${url}"`);
 }
 
 module.exports = routemeup;
