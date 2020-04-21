@@ -6,7 +6,6 @@ function routemeup (controllers, { method, url }) {
 
     if (matched) {
       const controller = controllers[route];
-      const requestMethod = method.toUpperCase()
       
       if(typeof controller === 'function'){
         return {
@@ -15,13 +14,16 @@ function routemeup (controllers, { method, url }) {
         };
       }
       
-      const controllerMethod = Object.keys(controller).find(key => key.toUpperCase() === requestMethod)
+      if(method){
+        const requestMethod = method.toUpperCase();
+        const controllerMethod = Object.keys(controller).find(key => key.toUpperCase() === requestMethod);
 
-      if (controller[controllerMethod]) {
-        return {
-          controller: controller[method],
-          tokens: matched.params
-        };
+        if (controller[controllerMethod]) {
+          return {
+            controller: controller[method],
+            tokens: matched.params
+          };
+        }
       }
     }
   }
