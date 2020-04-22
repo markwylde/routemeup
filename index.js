@@ -16,7 +16,13 @@ function routemeup (routes, { method, url }) {
 
       if (method) {
         const requestMethod = method.toUpperCase();
-        const controllerMethod = Object.keys(controller).find(key => key.toUpperCase() === requestMethod);
+        const controllerMethod = Object
+          .keys(controller)
+          .find(key => key.toUpperCase() === requestMethod);
+
+        if (!controller[controllerMethod]) {
+          return null;
+        }
 
         return {
           controller: controller[controllerMethod],

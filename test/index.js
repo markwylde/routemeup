@@ -12,6 +12,10 @@ const basicRoutes = {
     POST: () => 'test/1:post'
   },
 
+  '/found': {
+    GET: () => 'health:get'
+  },
+
   '/health': () => 'health:get'
 };
 
@@ -55,6 +59,13 @@ test('basic routemeup - not found', t => {
   t.plan(1);
 
   const route = routemeup(basicRoutes, { url: '/not-found', method: 'get' });
+  t.notOk(route);
+});
+
+test('basic routemeup - route found - method not found', t => {
+  t.plan(1);
+
+  const route = routemeup(basicRoutes, { url: '/found', method: 'post' });
   t.notOk(route);
 });
 
