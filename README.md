@@ -85,7 +85,7 @@ const routes = {
   }
 };
 
-const route = routemeup(routes, {url: location.href});
+const route = routemeup(routes, {url: location.pathname});
 if (route) {
   return route.controller(route.tokens);
 }
