@@ -87,10 +87,9 @@ const routes = {
 
 const route = routemeup(routes, {url: location.href});
 if (route) {
-  return controller(route.tokens);
+  return route.controller(route.tokens);
 }
 ```
-
 
 ## License
 This project is licensed under the terms of the MIT license.
