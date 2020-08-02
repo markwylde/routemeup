@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "tape": "^4.13.2"
+    "tape": "^5.0.1"
   },
   "dependencies": {
     "path-to-regexp": "^6.1.0"
