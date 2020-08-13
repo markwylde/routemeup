@@ -84,3 +84,12 @@ test('basic routemeup - found - with tokens', t => {
 
   t.equal(result, 'test/firstArg/withToken:get');
 });
+
+test('basic routemeup - found - with querystring', t => {
+  t.plan(1);
+
+  const route = routemeup(basicRoutes, { url: '/test?a=1', method: 'get' });
+  const result = route.controller('firstArg', route.tokens);
+
+  t.equal(result, 'test:get');
+});

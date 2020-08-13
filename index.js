@@ -1,8 +1,10 @@
 const { match } = require('path-to-regexp');
 
 function routemeup (routes, { method, url }) {
+  const pathname = (new URL(url, 'http://example.com')).pathname;
+
   for (const route in routes) {
-    const matched = match(route)(url);
+    const matched = match(route)(pathname);
 
     if (matched) {
       const controller = routes[route];
