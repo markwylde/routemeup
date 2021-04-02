@@ -4,7 +4,7 @@ function routemeup (routes, { method, url }) {
   const pathname = (new URL(url, 'http://example.com')).pathname;
 
   for (const route in routes) {
-    const matched = match(route)(pathname);
+    const matched = match(route, { decode: decodeURIComponent })(pathname);
 
     if (matched) {
       const controller = routes[route];
