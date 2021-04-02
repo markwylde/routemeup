@@ -85,6 +85,16 @@ test('basic routemeup - found - with tokens', t => {
   t.equal(result, 'test/firstArg/withToken:get');
 });
 
+test('basic routemeup - found - with urlencoded tokens', t => {
+  t.plan(2);
+
+  const route = routemeup(basicRoutes, { url: '/test/with%20Token', method: 'get' });
+  const result = route.controller('firstArg', route.tokens);
+
+  t.equal(route.tokens.id, 'with Token');
+  t.equal(result, 'test/firstArg/with Token:get');
+});
+
 test('basic routemeup - found - with querystring', t => {
   t.plan(1);
 
