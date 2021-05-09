@@ -4,15 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node test"
+    "test": "c8 node test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "tape": "^5.0.1"
+    "basictap": "^1.1.12",
+    "c8": "^7.7.2"
   },
   "dependencies": {
-    "path-to-regexp": "^6.1.0"
+    "path-to-regexp": "^6.2.0"
   }
 }
