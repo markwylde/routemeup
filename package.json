@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "basictap": "^1.1.12",
-    "c8": "^7.7.2"
+    "basictap": "^1.1.13",
+    "c8": "^7.7.3"
   },
   "dependencies": {
     "path-to-regexp": "^6.2.0"

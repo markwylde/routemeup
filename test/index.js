@@ -28,7 +28,7 @@ test('basic routemeup - found', t => {
   t.equal(result, 'test:get');
 });
 
-test('basic routemeup - found - no method', t => {
+test('routemeup controller is function- found - no method', t => {
   t.plan(1);
 
   const route = routemeup(basicRoutes, { url: '/health', method: 'get' });
