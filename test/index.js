@@ -7,6 +7,10 @@ const basicRoutes = {
     POST: () => 'test:post'
   },
 
+  '/test#with-hash': {
+    GET: () => 'test-with-hash:get'
+  },
+
   '/test/:id': {
     GET: (example, tokens) => `test/${example}/${tokens.id}:get`,
     POST: () => 'test/1:post'
@@ -26,6 +30,15 @@ test('basic routemeup - found', t => {
   const result = route.controller();
 
   t.equal(result, 'test:get');
+});
+
+test('basic routemeup - found with hash', t => {
+  t.plan(1);
+
+  const route = routemeup(basicRoutes, { url: '/test#with-hash', method: 'get' });
+  const result = route.controller();
+
+  t.equal(result, 'test-with-hash:get');
 });
 
 test('routemeup controller is function- found - no method', t => {

@@ -1,7 +1,8 @@
 const { match } = require('path-to-regexp');
 
 function routemeup (routes, { method, url }) {
-  const pathname = (new URL(url, 'http://example.com')).pathname;
+  const parsedUrl = new URL(url, 'http://example.com');
+  const pathname = parsedUrl.pathname + parsedUrl.hash;
 
   for (const route in routes) {
     const matched = match(route, { decode: decodeURIComponent })(pathname);
