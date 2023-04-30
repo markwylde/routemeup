@@ -1,9 +1,4 @@
 # routemeup
-[![Build Status](https://travis-ci.org/markwylde/routemeup.svg?branch=master)](https://travis-ci.org/markwylde/routemeup)
-[![David DM](https://david-dm.org/markwylde/routemeup.svg)](https://david-dm.org/markwylde/routemeup)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/markwylde/routemeup)
-[![GitHub package.json version](https://img.shields.io/github/package-json/v/markwylde/routemeup)](https://github.com/markwylde/routemeup/releases)
-[![GitHub](https://img.shields.io/github/license/markwylde/routemeup)](https://github.com/markwylde/routemeup/blob/master/LICENSE)
 
 A simple url router that can work on a server or web client with minimal magic.
 
@@ -15,7 +10,7 @@ npm install --save routemeup
 ## Example Usage
 ### Generic example
 ```javascript
-const routemeup = require('routemeup');
+import routemeup from 'routemeup';
 
 const routes = {
   '/users': {
@@ -37,7 +32,7 @@ if (route) {
 
 ### Http server example
 ```javascript
-const routemeup = require('routemeup');
+import routemeup from 'routemeup';
 
 const routes = {
   '/users': {
@@ -77,7 +72,7 @@ const server = http.createServer(function (request, response) {
 
 ### Web client example
 ```javascript
-const routemeup = require('routemeup');
+import routemeup from 'routemeup';
 
 const routes = {
   '/users': (tokens) => {

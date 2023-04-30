@@ -1,17 +1,25 @@
 {
   "name": "routemeup",
   "version": "3.0.0",
-  "description": "",
+  "type": "module",
+  "description": "A simple url router that can work on a server or web client with minimal magic.",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "c8 node test"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "router", "http", "server"
+  ],
+  "author": {
+    "email": "me@markwylde.com",
+    "name": "Mark Wylde",
+    "url": "https://github.com/markwylde"
+  },
+  "license": "MIT",
   "devDependencies": {
-    "basictap": "^3.4.3",
-    "c8": "^7.12.0"
+    "basictap": "^4.3.2",
+    "c8": "^7.13.0"
   },
   "dependencies": {
     "path-to-regexp": "^6.2.1"

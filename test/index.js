@@ -1,5 +1,5 @@
-const test = require('basictap');
-const routemeup = require('../');
+import test from 'basictap';
+import routemeup from '../index.js';
 
 const basicRoutes = {
   '/test': {
@@ -115,4 +115,53 @@ test('basic routemeup - found - with querystring', t => {
   const result = route.controller('firstArg', route.tokens);
 
   t.equal(result, 'test:get');
+});
+
+test('routemeup - found - multiple URL parameters', t => {
+  t.plan(1);
+
+  const routes = {
+    '/test/:param1/:param2': {
+      GET: (example, tokens) => `test/${example}/${tokens.param1}/${tokens.param2}:get`,
+    },
+  };
+
+  const route = routemeup(routes, { url: '/test/value1/value2', method: 'get' });
+  const result = route.controller('firstArg', route.tokens);
+
+  t.equal(result, 'test/firstArg/value1/value2:get');
+});
+
+test('routemeup - found - complex URL', t => {
+  t.plan(1);
+
+  const routes = {
+    '/test/:id#section': {
+      GET: (example, tokens) => `test/${example}/${tokens.id}#section:get`,
+    },
+  };
+
+  const route = routemeup(routes, { url: '/test/42#section', method: 'get' });
+  const result = route.controller('firstArg', route.tokens);
+
+  t.equal(result, 'test/firstArg/42#section:get');
+});
+
+test('routemeup - found - special characters in route', t => {
+  t.plan(1);
+
+  const routes = {
+    '/test/:param([a-z]+)': {
+      GET: (example, tokens) => `test/${example}/${tokens.param}:get`,
+    },
+  };
+
+  const route = routemeup(routes, { url: '/test/value', method: 'get' });
+
+  if (route) {
+    const result = route.controller('firstArg', route.tokens);
+    t.equal(result, 'test/firstArg/value:get');
+  } else {
+    t.fail('Route not found');
+  }
 });

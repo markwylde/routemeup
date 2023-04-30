@@ -1,4 +1,4 @@
-const { match } = require('path-to-regexp');
+import { match } from 'path-to-regexp';
 
 function routemeup (routes, { method, url }) {
   const parsedUrl = new URL(url, 'http://example.com');
@@ -36,4 +36,4 @@ function routemeup (routes, { method, url }) {
   }
 }
 
-module.exports = routemeup;
+export default routemeup;
