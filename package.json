@@ -1,6 +1,6 @@
 {
   "name": "routemeup",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "type": "module",
   "description": "A simple url router that can work on a server or web client with minimal magic.",
   "main": "index.js",
@@ -20,10 +20,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "basictap": "^4.3.2",
-    "c8": "^7.13.0"
+    "basictap": "^4.3.5",
+    "c8": "^10.1.2"
   },
   "dependencies": {
-    "path-to-regexp": "^6.2.1"
+    "path-to-regexp": "^8.1.0"
   }
 }

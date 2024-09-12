@@ -151,16 +151,16 @@ test('routemeup - found - special characters in route', t => {
   t.plan(1);
 
   const routes = {
-    '/test/:param([a-z]+)': {
+    '/test/:param': {
       GET: (example, tokens) => `test/${example}/${tokens.param}:get`,
     },
   };
 
-  const route = routemeup(routes, { url: '/test/value', method: 'get' });
+  const route = routemeup(routes, { url: '/test/+({[', method: 'get' });
 
   if (route) {
     const result = route.controller('firstArg', route.tokens);
-    t.equal(result, 'test/firstArg/value:get');
+    t.equal(result, 'test/firstArg/+({[:get');
   } else {
     t.fail('Route not found');
   }
