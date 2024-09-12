@@ -14,8 +14,8 @@ export interface RoutemeupResult {
 export function routemeup(
   routes: RouteMap,
   options: {
-    method: string;
-    url: string;
+    method?: string;
+    url?: string;
   }
 ): RoutemeupResult | null;
 
