@@ -1,6 +1,6 @@
 {
   "name": "routemeup",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "type": "module",
   "description": "A simple url router that can work on a server or web client with minimal magic.",
   "main": "index.js",
